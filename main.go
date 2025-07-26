@@ -1,8 +1,19 @@
 package main
 
-import "fmt"
+import (
+	"fmt"
+	"log"
+	"os"
+
+	"github.com/joho/godotenv"
+)
 
 func main() {
-	name := "chekify"
-	fmt.Println(name)
+	err := godotenv.Load()
+	if err != nil {
+		log.Fatal("Error loading .env file")
+	}
+
+	telegramToken := os.Getenv("TELEGRAM_TOKEN")
+	fmt.Println(telegramToken)
 }
