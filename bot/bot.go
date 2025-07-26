@@ -6,21 +6,26 @@ import (
 	"time"
 )
 
-func StartTelegramBot(token string) {
+func InitTelegramBot(token string) (bot *tele.Bot) {
 	telegramBotSettings := tele.Settings{
 		Token:  token,
 		Poller: &tele.LongPoller{Timeout: 10 * time.Second},
 	}
-	telegramBot, err := tele.NewBot(telegramBotSettings)
+	bot, err := tele.NewBot(telegramBotSettings)
 
 	if err != nil {
 		log.Fatal(err)
 		return
 	}
 
-	telegramBot.Handle("/start", func(ctx tele.Context) error {
+	handleStart(bot)
+	bot.Start()
+
+	return bot
+}
+
+func handleStart(bot *tele.Bot) {
+	bot.Handle("/start", func(ctx tele.Context) error {
 		return ctx.Send("Вітаю. Я твій розумник для обліку витрат")
 	})
-
-	telegramBot.Start()
 }
