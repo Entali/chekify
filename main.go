@@ -1,11 +1,10 @@
 package main
 
 import (
-	"fmt"
+	"chekify/bot"
+	"github.com/joho/godotenv"
 	"log"
 	"os"
-
-	"github.com/joho/godotenv"
 )
 
 func main() {
@@ -14,6 +13,5 @@ func main() {
 		log.Fatal("Error loading .env file")
 	}
 
-	telegramToken := os.Getenv("TELEGRAM_TOKEN")
-	fmt.Println(telegramToken)
+	bot.StartTelegramBot(os.Getenv("TELEGRAM_TOKEN"))
 }
