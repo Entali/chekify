@@ -1,17 +1,18 @@
 package handlers
 
 import (
+	"chekify/bot/constants"
 	tele "gopkg.in/telebot.v4"
 )
 
 func createMenu() tele.ReplyMarkup {
 	menu := tele.ReplyMarkup{ResizeKeyboard: true}
 
-	addManuallyBtn := menu.Data("📝 Додати вручну", "add_manually", "payload")
-	sendCheckBtn := menu.Data("📸 Надіслати чек", "send_check", "payload")
+	addManuallyBtn := menu.Data("📝 Додати вручну", constants.AddManually)
+	sendCheckBtn := menu.Data("📸 Надіслати чек", constants.SendCheck)
 	postponedTransactionsBtn := menu.Data("⏳ Відкладені транзакції",
-		"postponed_transactions",
-		"payload")
+		constants.PostponedTransactions,
+	)
 
 	menu.Inline(
 		menu.Row(addManuallyBtn),

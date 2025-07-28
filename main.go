@@ -16,8 +16,8 @@ func main() {
 		log.Fatal("Error loading .env file")
 	}
 
-	b := bot.InitTelegramBot(os.Getenv("TELEGRAM_TOKEN"))
-	b.Start()
+	telegramBot := bot.InitTelegramBot(os.Getenv("TELEGRAM_TOKEN"))
+	telegramBot.Start()
 
 	log.Info("Бот успішно запущений")
 }
