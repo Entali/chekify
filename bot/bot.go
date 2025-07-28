@@ -28,5 +28,5 @@ func InitTelegramBot(token string) (bot *tele.Bot) {
 func registerHandlers(bot *tele.Bot) {
 	handlers.Start(bot)
 	handlers.Menu(bot)
-	bot.Start()
+	handlers.SendCheck(bot)
 }
