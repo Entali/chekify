@@ -8,10 +8,10 @@ import (
 func createMenu() tele.ReplyMarkup {
 	menu := tele.ReplyMarkup{ResizeKeyboard: true}
 
-	addManuallyBtn := menu.Data("📝 Додати вручну", constants.AddManually)
-	sendCheckBtn := menu.Data("📸 Надіслати чек", constants.SendCheck)
+	addManuallyBtn := menu.Data("📝 Додати вручну", constants.CallbackAddManual)
+	sendCheckBtn := menu.Data("📸 Надіслати чек", constants.CallbackSendCheck)
 	postponedTransactionsBtn := menu.Data("⏳ Відкладені транзакції",
-		constants.PostponedTransactions,
+		constants.CallbackPostponed,
 	)
 
 	menu.Inline(
@@ -24,7 +24,7 @@ func createMenu() tele.ReplyMarkup {
 }
 
 func Menu(bot *tele.Bot) {
-	bot.Handle("/menu", func(ctx tele.Context) error {
+	bot.Handle(constants.CommandMenu, func(ctx tele.Context) error {
 		menu := createMenu()
 
 		return ctx.Send("Що хочеш зробити?", &tele.SendOptions{

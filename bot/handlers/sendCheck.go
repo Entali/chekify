@@ -11,7 +11,7 @@ func SendCheck(bot *tele.Bot) {
 		data := ctx.Callback().Data
 		command := utils.ParseCallback(data)
 
-		if command == constants.SendCheck {
+		if command == constants.CallbackSendCheck {
 			_ = ctx.Respond()
 
 			return ctx.Send("Окей, надішли мені фото або скріншот чека")

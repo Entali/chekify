@@ -1,7 +1,10 @@
 package constants
 
 const (
-	SendCheck             = "send_check"
-	AddManually           = "add_manually"
-	PostponedTransactions = "postponed_transactions"
+	CommandStart = "/start"
+	CommandMenu  = "/menu"
+
+	CallbackSendCheck = "send_check"
+	CallbackAddManual = "add_manually"
+	CallbackPostponed = "postponed_transactions"
 )
